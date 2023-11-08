@@ -1,6 +1,6 @@
 name: amap_flutter_location
 description: 高德定位SDK Flutter插件
-version: 3.1.0
+version: 3.2.0
 homepage: https://lbs.amap.com/
 repository: https://github.com/GitHubWebb/amap-location-flutter
 
