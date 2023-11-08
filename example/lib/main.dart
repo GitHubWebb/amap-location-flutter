@@ -15,9 +15,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Map<String, Object> _locationResult;
+  Map<String, Object>? _locationResult;
 
-  StreamSubscription<Map<String, Object>> _locationListener;
+  late StreamSubscription<Map<String, Object>> _locationListener;
 
   AmapLocationFlutterPlugin _locationPlugin = new AmapLocationFlutterPlugin();
 
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     ///注册定位结果监听
     _locationListener = _locationPlugin
         .onLocationChanged()
-        .listen((Map<String, Object> result) {
+        !.listen((Map<String, Object> result) {
       setState(() {
         _locationResult = result;
       });
@@ -137,18 +137,14 @@ class _MyAppState extends State<MyApp> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            new RaisedButton(
+            new TextButton(
               onPressed: _startLocation,
               child: new Text('开始定位'),
-              color: Colors.blue,
-              textColor: Colors.white,
             ),
             new Container(width: 20.0),
-            new RaisedButton(
+            new TextButton(
               onPressed: _stopLocation,
               child: new Text('停止定位'),
-              color: Colors.blue,
-              textColor: Colors.white,
             )
           ],
         ));
@@ -174,11 +170,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> widgets = new List();
+    List<Widget> widgets = [];
     widgets.add(_createButtonContainer());
 
     if (_locationResult != null) {
-      _locationResult.forEach((key, value) {
+      _locationResult?.forEach((key, value) {
         widgets.add(_resultWidget(key, value));
       });
     }

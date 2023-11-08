@@ -19,9 +19,9 @@ class AmapLocationFlutterPlugin {
       .asBroadcastStream()
       .map<Map<String, Object>>((element) => element.cast<String, Object>());
 
-  StreamController<Map<String, Object>> _receiveStream;
-  StreamSubscription<Map<String, Object>> _subscription;
-  String _pluginKey;
+  StreamController<Map<String, Object>>? _receiveStream;
+  StreamSubscription<Map<String, Object>>? _subscription;
+  late String _pluginKey;
 
   /// 适配iOS 14定位新特性，只在iOS平台有效
   Future<AMapAccuracyAuthorization> getSystemAccuracyAuthorization() async {
@@ -77,25 +77,25 @@ class AmapLocationFlutterPlugin {
   void destroy() {
     _methodChannel.invokeListMethod('destroy', {'pluginKey': _pluginKey});
     if (_subscription != null) {
-      _receiveStream.close();
-      _subscription.cancel();
+      _receiveStream?.close();
+      _subscription?.cancel();
       _receiveStream = null;
       _subscription = null;
     }
   }
 
   ///定位结果回调
-  Stream<Map<String, Object>> onLocationChanged() {
+  Stream<Map<String, Object>>? onLocationChanged() {
     if (_receiveStream == null) {
       _receiveStream = StreamController();
       _subscription = _onLocationChanged.listen((Map<String, Object> event) {
         if (event != null && event['pluginKey'] == _pluginKey) {
           Map<String, Object> newEvent = Map<String, Object>.of(event);
           newEvent.remove('pluginKey');
-          _receiveStream.add(newEvent);
+          _receiveStream?.add(newEvent);
         }
       });
     }
-    return _receiveStream.stream;
+    return _receiveStream?.stream;
   }
 }
