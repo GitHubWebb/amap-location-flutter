@@ -1,4 +1,3 @@
-
 /// 定位参数设置
 class AMapLocationOption {
   /// 是否需要地址信息，默认true
@@ -49,22 +48,24 @@ class AMapLocationOption {
   double distanceFilter = -1;
 
   ///iOS 14中设置期望的定位精度权限
-  AMapLocationAccuracyAuthorizationMode desiredLocationAccuracyAuthorizationMode = AMapLocationAccuracyAuthorizationMode.FullAccuracy;
+  AMapLocationAccuracyAuthorizationMode
+      desiredLocationAccuracyAuthorizationMode =
+      AMapLocationAccuracyAuthorizationMode.FullAccuracy;
 
   /// iOS 14中定位精度权限由模糊定位升级到精确定位时，需要用到的场景key fullAccuracyPurposeKey 这个key要和plist中的配置一样
   String fullAccuracyPurposeKey = "";
 
   AMapLocationOption(
-      {
-        this.locationInterval = 2000,
-        this.needAddress = true,
-        this.locationMode = AMapLocationMode.Hight_Accuracy,
-        this.geoLanguage = GeoLanguage.DEFAULT,
-        this.onceLocation = false,
-        this.pausesLocationUpdatesAutomatically = false,
-        this.desiredAccuracy = DesiredAccuracy.Best,
-        this.distanceFilter = -1,
-        this.desiredLocationAccuracyAuthorizationMode = AMapLocationAccuracyAuthorizationMode.FullAccuracy});
+      {this.locationInterval = 2000,
+      this.needAddress = true,
+      this.locationMode = AMapLocationMode.Hight_Accuracy,
+      this.geoLanguage = GeoLanguage.DEFAULT,
+      this.onceLocation = false,
+      this.pausesLocationUpdatesAutomatically = false,
+      this.desiredAccuracy = DesiredAccuracy.Best,
+      this.distanceFilter = -1,
+      this.desiredLocationAccuracyAuthorizationMode =
+          AMapLocationAccuracyAuthorizationMode.FullAccuracy});
 
   ///获取设置的定位参数对应的Map
   Map getOptionsMap() {
@@ -77,8 +78,9 @@ class AMapLocationOption {
       "pausesLocationUpdatesAutomatically": pausesLocationUpdatesAutomatically,
       "desiredAccuracy": desiredAccuracy.index,
       'distanceFilter': distanceFilter,
-      "locationAccuracyAuthorizationMode": desiredLocationAccuracyAuthorizationMode.index,
-      "fullAccuracyPurposeKey":fullAccuracyPurposeKey
+      "locationAccuracyAuthorizationMode":
+          desiredLocationAccuracyAuthorizationMode.index,
+      "fullAccuracyPurposeKey": fullAccuracyPurposeKey
     };
   }
 }

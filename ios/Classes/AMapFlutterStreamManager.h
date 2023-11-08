@@ -1,5 +1,5 @@
 //
-//  AmapFlutterStreamManager.h
+//  AMapFlutterStreamManager.h
 //  amap_location_flutter_plugin
 //
 //  Created by ldj on 2018/10/30.
@@ -9,14 +9,14 @@
 #import <Flutter/Flutter.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class AmapFlutterStreamHandler;
-@interface AmapFlutterStreamManager : NSObject
+@class AMapFlutterStreamHandler;
+@interface AMapFlutterStreamManager : NSObject
 + (instancetype)sharedInstance ;
-@property (nonatomic, strong) AmapFlutterStreamHandler* streamHandler;
+@property (nonatomic, strong) AMapFlutterStreamHandler* streamHandler;
 
 @end
 
-@interface AmapFlutterStreamHandler : NSObject<FlutterStreamHandler>
+@interface AMapFlutterStreamHandler : NSObject<FlutterStreamHandler>
 @property (nonatomic, strong,nullable) FlutterEventSink eventSink;
 
 @end

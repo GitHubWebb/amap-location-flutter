@@ -1,4 +1,4 @@
-package com.amap.location.amaplocationflutterplugin;
+package android.src.main.java.com.amap.flutter.location;
 
 import android.content.Context;
 import android.util.Log;
@@ -30,12 +30,12 @@ public class AMapLocationClientImpl implements AMapLocationListener {
         mContext = context;
         mPluginKey = pluginKey;
         mEventSink = eventSink;
-        if(null == locationClient) {
-            try {
+        try {
+            if (null == locationClient) {
                 locationClient = new AMapLocationClient(context);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -43,18 +43,18 @@ public class AMapLocationClientImpl implements AMapLocationListener {
      * 开始定位
      */
     public void startLocation() {
-        if (null == locationClient) {
-            try {
+        try {
+            if (null == locationClient) {
                 locationClient = new AMapLocationClient(mContext);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         if (null != locationOption) {
             locationClient.setLocationOption(locationOption);
+            locationClient.setLocationListener(this);
+            locationClient.startLocation();
         }
-        locationClient.setLocationListener(this);
-        locationClient.startLocation();
     }
 
 

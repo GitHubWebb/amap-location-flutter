@@ -1,20 +1,20 @@
 //
-//  AmapFlutterStreamManager.m
+//  AMapFlutterStreamManager.m
 //  amap_location_flutter_plugin
 //
 //  Created by ldj on 2018/10/30.
 //
 
-#import "AmapFlutterStreamManager.h"
+#import "AMapFlutterStreamManager.h"
 
-@implementation AmapFlutterStreamManager
+@implementation AMapFlutterStreamManager
 
 + (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
-    static AmapFlutterStreamManager *manager = nil;
+    static AMapFlutterStreamManager *manager = nil;
     dispatch_once(&onceToken, ^{
-        manager = [[AmapFlutterStreamManager alloc] init];
-        AmapFlutterStreamHandler * streamHandler = [[AmapFlutterStreamHandler alloc] init];
+        manager = [[AMapFlutterStreamManager alloc] init];
+        AMapFlutterStreamHandler * streamHandler = [[AMapFlutterStreamHandler alloc] init];
         manager.streamHandler = streamHandler;
     });
     
@@ -24,7 +24,7 @@
 @end
 
 
-@implementation AmapFlutterStreamHandler
+@implementation AMapFlutterStreamHandler
 
 - (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {
     self.eventSink = eventSink;
