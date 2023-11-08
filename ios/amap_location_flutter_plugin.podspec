@@ -2,7 +2,7 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'amap_location_flutter_plugin'
+  s.name             = 'amap_flutter_location'
   s.version          = '0.0.1'
   s.summary          = 'AMapLocation flutter plugin'
   s.description      = <<-DESC

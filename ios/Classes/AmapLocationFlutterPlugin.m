@@ -33,13 +33,13 @@
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
-                                     methodChannelWithName:@"amap_location_flutter_plugin"
+                                     methodChannelWithName:@"amap_flutter_location"
                                      binaryMessenger:[registrar messenger]];
     AmapLocationFlutterPlugin* instance = [[AmapLocationFlutterPlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];
     
     //AmapFlutterStreamHandler * streamHandler = [[AmapFlutterStreamHandler alloc] init];
-    FlutterEventChannel *eventChanel = [FlutterEventChannel eventChannelWithName:@"amap_location_flutter_plugin_stream" binaryMessenger:[registrar messenger]];
+    FlutterEventChannel *eventChanel = [FlutterEventChannel eventChannelWithName:@"amap_flutter_location_stream" binaryMessenger:[registrar messenger]];
     [eventChanel setStreamHandler:[[AmapFlutterStreamManager sharedInstance] streamHandler]];
         
 }

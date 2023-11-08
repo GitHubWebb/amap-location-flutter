@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'amap_location_option.dart';
 
 class AmapLocationFlutterPlugin {
-  static const String _CHANNEL_METHOD_LOCATION = "amap_location_flutter_plugin";
+  static const String _CHANNEL_METHOD_LOCATION = "amap_flutter_location";
   static const String _CHANNEL_STREAM_LOCATION =
-      "amap_location_flutter_plugin_stream";
+      "amap_flutter_location_stream";
 
   static const MethodChannel _methodChannel =
       const MethodChannel(_CHANNEL_METHOD_LOCATION);

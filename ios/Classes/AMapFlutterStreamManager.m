@@ -1,6 +1,6 @@
 //
 //  AMapFlutterStreamManager.m
-//  amap_location_flutter_plugin
+//  amap_flutter_location
 //
 //  Created by ldj on 2018/10/30.
 //

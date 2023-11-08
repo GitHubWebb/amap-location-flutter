@@ -4,7 +4,6 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.amap.api.location.AMapLocationClient;
-import com.amap.location.amaplocationflutterplugin.AMapLocationClientImpl;
 
 import java.lang.reflect.Method;
 import java.util.Map;
