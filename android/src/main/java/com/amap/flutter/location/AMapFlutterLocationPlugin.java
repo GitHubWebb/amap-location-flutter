@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import io.flutter.Log;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
@@ -121,27 +122,16 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
 
   private void updatePrivacyStatement(Map privacyShowMap) {
     if (null != privacyShowMap) {
-      Class<AMapLocationClient> locationClazz = AMapLocationClient.class;
-
       if (privacyShowMap.containsKey("hasContains") && privacyShowMap.containsKey("hasShow")) {
         boolean hasContains = (boolean) privacyShowMap.get("hasContains");
         boolean hasShow = (boolean) privacyShowMap.get("hasShow");
-        try {
-          Method showMethod = locationClazz.getMethod("updatePrivacyShow", Context.class, boolean.class, boolean.class);;
-          showMethod.invoke(null, mContext, hasContains, hasShow);
-        } catch (Throwable e) {
-//          e.printStackTrace();
-        }
+        AMapLocationClient.updatePrivacyShow(mContext, hasContains, hasShow);
       }
 
       if (privacyShowMap.containsKey("hasAgree")) {
         boolean hasAgree = (boolean) privacyShowMap.get("hasAgree");
-        try {
-          Method agreeMethod = locationClazz.getMethod("updatePrivacyAgree", Context.class, boolean.class);
-          agreeMethod.invoke(null, mContext, hasAgree);
-        } catch (Throwable e) {
-//            e.printStackTrace();
-        }
+        AMapLocationClient.updatePrivacyAgree(mContext,  hasAgree);
+
       }
     }
   }
