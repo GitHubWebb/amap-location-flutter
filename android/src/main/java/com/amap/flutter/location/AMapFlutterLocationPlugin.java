@@ -40,32 +40,16 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
         setApiKey((Map) call.arguments);
         break;
       case "setLocationOption":
-        try {
-          setLocationOption((Map) call.arguments);
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
+        setLocationOption((Map) call.arguments);
         break;
       case "startLocation":
-        try {
-          startLocation((Map) call.arguments);
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
+        startLocation((Map) call.arguments);
         break;
       case "stopLocation":
-        try {
-          stopLocation((Map) call.arguments);
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
+        stopLocation((Map) call.arguments);
         break;
       case "destroy":
-        try {
-          destroy((Map) call.arguments);
-        } catch (Exception e) {
-          throw new RuntimeException(e);
-        }
+        destroy((Map) call.arguments);
         break;
       default:
         result.notImplemented();
@@ -89,7 +73,7 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
   /**
    * 开始定位
    */
-  private void startLocation(Map argsMap) throws Exception {
+  private void startLocation(Map argsMap) {
     AMapLocationClientImpl locationClientImp = getLocationClientImp(argsMap);
     if (null != locationClientImp) {
       locationClientImp.startLocation();
@@ -100,7 +84,7 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
   /**
    * 停止定位
    */
-  private void stopLocation(Map argsMap) throws Exception {
+  private void stopLocation(Map argsMap) {
     AMapLocationClientImpl locationClientImp = getLocationClientImp(argsMap);
     if (null != locationClientImp) {
       locationClientImp.stopLocation();
@@ -112,7 +96,7 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
    *
    * @param argsMap
    */
-  private void destroy(Map argsMap) throws Exception {
+  private void destroy(Map argsMap) {
     AMapLocationClientImpl locationClientImp = getLocationClientImp(argsMap);
     if (null != locationClientImp) {
       locationClientImp.destroy();
@@ -167,7 +151,7 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
    *
    * @param argsMap
    */
-  private void setLocationOption(Map argsMap) throws Exception {
+  private void setLocationOption(Map argsMap) {
     AMapLocationClientImpl locationClientImp = getLocationClientImp(argsMap);
     if (null != locationClientImp) {
       locationClientImp.setLocationOption(argsMap);
@@ -202,7 +186,7 @@ public class AMapFlutterLocationPlugin implements FlutterPlugin, MethodCallHandl
     }
   }
 
-  private AMapLocationClientImpl getLocationClientImp(Map argsMap) throws Exception {
+  private AMapLocationClientImpl getLocationClientImp(Map argsMap) {
     if (null == locationClientMap) {
       locationClientMap = new ConcurrentHashMap<String, AMapLocationClientImpl>(8);
     }

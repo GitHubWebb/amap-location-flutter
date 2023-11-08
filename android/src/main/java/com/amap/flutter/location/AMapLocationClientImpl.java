@@ -75,6 +75,7 @@ public class AMapLocationClientImpl implements AMapLocationListener {
             locationClient = null;
         }
     }
+
     /**
      * 定位回调
      *
